@@ -1,0 +1,29 @@
+# Ignore built files
+build/
+
+# Ignore Eclipse settings
+.settings/
+
+# Ignore compiled Java classes
+*.class
+
+# Ignore target directory (if Maven is used)
+/target/
+
+# Ignore IDE-specific files
+*.iml
+*.ipr
+*.iws
+
+# Ignore user-specific files
+*.log
+*.swp
+
+# Ignore files generated during development or runtime
+*.jar
+*.war
+*.ear
+
+# Ignore database files
+*.db
+*.sqlite
