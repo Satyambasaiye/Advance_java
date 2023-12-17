@@ -30,13 +30,14 @@ public class Player extends BaseEntity {
 	
 //	to avoid mapping add annotation
 	@ManyToOne
-	@JoinColumn(name="team_id")
+	@JoinColumn(name="team_id",nullable = false)
 	private Team myTeam;
 	
 	public Player() {
 		
 	}
-	public Player(String firstName, String lastName, LocalDate dob, double battingAvg, int wicketsTaken) {
+	public Player(String firstName, String lastName, LocalDate dob, double battingAvg, int wicketsTaken)
+	{
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;

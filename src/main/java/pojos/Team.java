@@ -2,6 +2,7 @@ package pojos;
 
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.*;
@@ -10,7 +11,7 @@ import javax.persistence.*;
  * id , name, abbreviation,owner,max_age,batting_avg,wickets_taken	
  */
 @Entity
-@Table(name = "teams")
+@Table(name = "teams" )
 public class Team extends BaseEntity {
 	@Column(length = 100,unique = true)
 	private String name;
@@ -25,7 +26,7 @@ public class Team extends BaseEntity {
 	private int minWicketsTaken;
 //	team 1-->*player
 //	terms : one ,parent table, inverse(sincce no fk here)
-	@OneToMany(mappedBy = "myTeam")
+	@OneToMany(mappedBy = "myTeam",cascade = CascadeType.ALL,orphanRemoval =true)
 	private List<Player>players=new ArrayList();//initialize collection based property to empty
 	
 
@@ -91,6 +92,16 @@ public class Team extends BaseEntity {
 	}
 	public void setMinWicketsTaken(int minWicketsTaken) {
 		this.minWicketsTaken = minWicketsTaken;
+	}
+	public void addPlayer(Player p) {
+		this.players.add(p);
+		p.setMyTeam(this);
+	}
+	public void removePlayer(Player p)
+	
+	{
+		this.players.remove(p);
+		p.setMyTeam(null);
 	}
 	@Override
 	public String toString() {
