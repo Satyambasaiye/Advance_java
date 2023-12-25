@@ -1,10 +1,16 @@
 package com.app.entities;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -25,14 +31,14 @@ public class Railway extends BaseEntity{
 	@Column(name = "Train_type",length = 20,nullable = false)
 	private Category type;
 	@Column(name = "Start_time",length = 30,nullable = false)
-	private LocalTime startTime;
+	private LocalDateTime startTime;
 	@Column(name="End_time",length = 30,nullable = false)
-	private LocalTime endTime;
+	private LocalDateTime endTime;
 	@Column(length = 20,nullable = false)
 	private String source;
 	@Column(length = 20,nullable = false)
 	private String destiation;
-	@OneToMany(mappedBy = "rail",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+	@OneToMany(mappedBy = "rail",cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Station> stations=new ArrayList<Station>();
 	public Railway() {
 		// TODO Auto-generated constructor stub
@@ -51,7 +57,7 @@ public class Railway extends BaseEntity{
 		st.setRail(null);
 	}
 
-	public Railway(String name, Category type, LocalTime startTime, LocalTime endTime, String source, String destiation) {
+	public Railway(String name, Category type, LocalDateTime startTime, LocalDateTime endTime, String source, String destiation) {
 		super();
 		this.name = name;
 		this.type = type;
