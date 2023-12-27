@@ -1,7 +1,9 @@
 package com.app.dto;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
+import org.hibernate.annotations.Type;
 
 import com.app.entities.Category;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -18,10 +20,8 @@ public class RailwayReq {
 	private Long id;
 	private String name;
 	private Category type;	
-    @JsonFormat(pattern = "HH:mm:ss")
 
 	private LocalDateTime startTime;
-    @JsonFormat(pattern = "HH:mm:ss")
 
 	private LocalDateTime endTime;
 	private String source;
